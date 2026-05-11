@@ -5,7 +5,6 @@ import (
 
 	"github.com/Compogo/compogo/logger"
 	"github.com/Compogo/db-client/client"
-	"github.com/Compogo/db-client/driver"
 	logger2 "github.com/Compogo/db-client/logger"
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -13,7 +12,7 @@ import (
 // SQLite is the driver identifier for SQLite3 databases.
 // It implements the driver.Driver interface and is used for
 // registration in db-client, db-migrator, and db-sql-generator.
-const SQLite driver.Driver = "sqlite3"
+const SQLite = "sqlite3"
 
 // Client is the interface for SQLite3 database operations.
 // It embeds the standard client.Client interface.
@@ -47,6 +46,6 @@ func (m *sqliteClient) SQL() *sql.DB {
 	return m.DB
 }
 
-func (m *sqliteClient) Driver() driver.Driver {
+func (m *sqliteClient) DriverName() string {
 	return SQLite
 }
